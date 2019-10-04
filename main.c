@@ -5,7 +5,7 @@
 
 void troca(int origem , int destino, int matriz[20][3]){ // troca o numero na coluna(torre) origem para a coluna destino
   
-  int c = 0, n;
+    int c = 0, n;
   
     for(int i = 19; c == 0 && i >= 0; i--){
         for(int j = 0; c == 0 && j < 20; j++){
@@ -20,7 +20,7 @@ void troca(int origem , int destino, int matriz[20][3]){ // troca o numero na co
 }
 void imprimirTorres(int representacao[20][3]){
 
-	int grafica[23][125]; //matriz que contem as torres prontas
+    int grafica[23][125]; //matriz que contem as torres prontas
 
     int i, j, aux, anel;
 
@@ -77,11 +77,8 @@ void imprimirTorres(int representacao[20][3]){
   printf("\n");
 }
 
-void towerOfHanoi(int num, int origem, int dest, int aux, int matriz[20][3]) //algoritmo que define como a torre de hanoi é resolvida de acordo com o número de discos
-{   
-    
-    if (num == 1) 
-    {   
+void towerOfHanoi(int num, int origem, int dest, int aux, int matriz[20][3]){ //algoritmo que define como a torre de hanoi é resolvida de acordo com o número de discos   
+    if (num == 1){
         troca(origem, dest, matriz);
         imprimirTorres(matriz);
         return; 
