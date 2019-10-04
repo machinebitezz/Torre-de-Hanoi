@@ -80,11 +80,13 @@ void imprimirTorres(int representacao[20][3]){
 void towerOfHanoi(int num, int origem, int dest, int aux, int matriz[20][3]){ //algoritmo que define como a torre de hanoi é resolvida de acordo com o número de discos   
     if (num == 1){
         troca(origem, dest, matriz);
+        printf("Mova o disco %d da torre %d para a torre %d:\n", num, origem + 1, dest + 1);
         imprimirTorres(matriz);
         return; 
-    } 
+    }
     towerOfHanoi(num-1, origem, aux, dest, matriz);
     troca(origem, dest, matriz);
+    printf("Mova o disco %d da torre %d para a torre %d:\n", num, origem + 1, dest + 1);
     imprimirTorres(matriz); 
     towerOfHanoi(num-1, aux, dest, origem, matriz); 
 }
@@ -126,6 +128,7 @@ int main(void) {
         break;
     
     case 'R':
+        printf("Para resolver a torre de hanoi:\n");
         imprimirTorres(mat);
         towerOfHanoi(n, 0, 2, 1, mat);
         printf("Resolvido!\n");
