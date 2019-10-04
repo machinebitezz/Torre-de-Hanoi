@@ -1,0 +1,1 @@
+Trabalho em grupo para a disciplina de programação 1 da universidade federal do Pará, cujo objetivo era programar o jogo "Torre de Hanoi" possibilitando tanto que o usuário jogasse quanto que o jogo resolvesse o puzzle para o usuário.
