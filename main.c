@@ -84,18 +84,27 @@ void towerOfHanoi(int num, int origem, int dest, int aux, int matriz[20][3]) //a
     {   
         troca(origem, dest, matriz);
         imprimirTorres(matriz);
-        printf("Resolvido!\n");
         return; 
     } 
     towerOfHanoi(num-1, origem, aux, dest, matriz);
     troca(origem, dest, matriz);
     imprimirTorres(matriz); 
     towerOfHanoi(num-1, aux, dest, origem, matriz); 
-} 
+}
 
-int main() {
-    
-    int num_aneis, mat[20][3],i ,j , n;
+int main(void) {
+
+    int num_aneis, mat[20][3], i, j, n;
+    char opcao;
+
+    printf("O que deseja fazer?\n");
+    printf("Jogar Torre de Hanoi (J)\n");
+    printf("Resolver Torre de Hanoi (R)\n");
+    scanf(" %c", &opcao);
+
+    if (opcao >= 97 && opcao <= 122){ //se for minusculo
+        opcao -= 32; //transforma em maisuculo (vide tabela ascii);
+    }
 
     printf("Com quantos aneis deseja jogar?\n");
     scanf(" %d", &num_aneis);
@@ -112,7 +121,17 @@ int main() {
         }
     }
     
-    imprimirTorres(mat);
-    towerOfHanoi(n, 0, 2, 1, mat);
-    return 0; 
-} 
+    switch (opcao){
+    
+    case 'J':
+        imprimirTorres(mat);
+        printf("WIP");
+        break;
+    
+    case 'R':
+        imprimirTorres(mat);
+        towerOfHanoi(n, 0, 2, 1, mat);
+        printf("Resolvido!\n");
+    break;
+    }
+}
