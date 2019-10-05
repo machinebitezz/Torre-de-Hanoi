@@ -24,7 +24,6 @@ void troca(int origem , int destino, int matriz[20][3]){ // troca o disco na col
 void imprimirTorres(int representacao[20][3]){
 
     printf("\n");//utilizado para separar as linhas de texto da ilustração da torre
-
     int grafica[23][125]; //matriz que contem as torres prontas
 
     int i, j, aux, anel;
@@ -129,11 +128,10 @@ void jogo(int matriz[20][3]){ //procedimento que define o jogo
     goto lerOD;	// caso seja inválido, o programa voltará a linha de código de leitura dos locais (orig e dest)
     break;
 }
-}
 
 int main(void) {
 
-    int num_aneis, mat[20][3], i, j;
+    int num_aneis, mat[20][3], i, j, n;
     char opcao;
 
     printf("O que deseja fazer?\n");
@@ -141,9 +139,6 @@ int main(void) {
     printf("Resolver Torre de Hanoi (R)\n");
     lerOp: scanf(" %c", &opcao);
 
-    if (opcao >= 97 && opcao <= 122){ //se for minusculo
-        opcao -= 32; //transforma em maisuculo (vide tabela ascii);
-    }
     if(opcao != 74 && opcao != 82){			//verifica se o caracter é válido
           printf("Opção inválida.\nEscreva novamente.\n");	// caso não seja, volta-se para linha de leitura da opção
           goto lerOp;
@@ -151,8 +146,6 @@ int main(void) {
 
     printf("Com quantos aneis deseja jogar?\n");
     scanf(" %d", &num_aneis);
-
-    n = num_aneis; // variavel global recebe o número de aneis
 
     for( i = 19; i >= 0 ; i--){// construção da matriz inicial(aquela com discos somente na primeira coluna)
         for( j = 0; j < 3; j++){
@@ -181,5 +174,4 @@ int main(void) {
         printf("Resolvido\n");
         break;
     }
-    return 0;
 }
