@@ -83,7 +83,7 @@ void imprimirTorres(int representacao[20][3]){
   getchar(); //funciona como o readkey do pascal, serve para facilitar a vizualição de cada passo do jogo e da resolução
 }
 
-void towerOfHanoi(int num, int origem, int dest, int aux, int matriz[20][3]){ //algoritmo recursivo que define como a torre de hanoi é resolvida de acordo com o número de discos   
+void Hanoi(int num, int origem, int dest, int aux, int matriz[20][3]){ //algoritmo recursivo que define como a torre de hanoi é resolvida de acordo com o número de discos   
     if (num == 1){
       troca(origem, dest, matriz);
       clear();
@@ -91,12 +91,12 @@ void towerOfHanoi(int num, int origem, int dest, int aux, int matriz[20][3]){ //
       imprimirTorres(matriz);
       return; 
     }
-    towerOfHanoi(num-1, origem, aux, dest, matriz);
+    Hanoi(num-1, origem, aux, dest, matriz);
     troca(origem, dest, matriz);
     clear();
     printf("Mova o disco %d da torre %d para a torre %d:\n", num, origem + 1, dest + 1);
     imprimirTorres(matriz); 
-    towerOfHanoi(num-1, aux, dest, origem, matriz);
+    Hanoi(num-1, aux, dest, origem, matriz);
 }
 
 void jogo(int matriz[20][3]){ //procedimento que define o jogo
@@ -115,14 +115,14 @@ void jogo(int matriz[20][3]){ //procedimento que define o jogo
         }}}}
 
   switch (c){
-    case 1:			//caso o movimento seja válido, o procedimento se repetirá até a vitória do jogador
+    case 1:
     troca(orig, dest, matriz); 
     clear();
-    imprimirTorres(matriz);	
+    imprimirTorres(matriz);	// caso o movimento seja válido, o procedimento se repetirá até a vitória do jogador
     if(matriz[20 - n][2] == 1 || matriz[20 - n][1] == 1){// verificação se o jogo foi vencido
-    printf("Você venceu!!\n");		//faz isso checando se as torres 2 e 3, na linha 20-n (altura máxima da torre) tem o disco 1
-    break;                              
-    }else{jogo(matriz);} //caso o jogador não tenha vencido o procedimento se repetirá
+    printf("Você venceu!!\n");
+    break;                                    //faz isso checando se as torres 2 e 3, na linha 20-n (altura máxima da torre) tem o disco 1
+    }else{jogo(matriz);}
     break;
   case 0:
     printf("Movimento inválido. Tente novamente.\n");
@@ -136,7 +136,7 @@ int main(void) {
     int num_aneis, mat[20][3], i, j;
     char opcao;
 
-    printf("O que deseja fazer?\n");		// MENU
+    printf("O que deseja fazer?\n");
     printf("Jogar Torre de Hanoi (J)\n");
     printf("Resolver Torre de Hanoi (R)\n");
     lerOp: scanf(" %c", &opcao);
@@ -177,7 +177,7 @@ int main(void) {
         printf("Para resolver a torre de hanoi:\n");
         imprimirTorres(mat);
         getchar();
-        towerOfHanoi(n, 0, 2, 1, mat);
+        Hanoi(n, 0, 2, 1, mat);
         printf("Resolvido\n");
         break;
     }
