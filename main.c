@@ -152,8 +152,6 @@ int main(void) {
 
     opcao = toupper(opcao);
 
-    printf("%c", opcao);
-
     if(opcao != 74 && opcao != 82){			//verifica se o caracter é válido
           printf("Opção inválida.\nEscreva novamente.\n");	// caso não seja, volta-se para linha de leitura da opção
           goto lerOp;
