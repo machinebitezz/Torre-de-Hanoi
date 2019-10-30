@@ -1,4 +1,5 @@
 #include <stdio.h> 
+#include <ctype.h>
 #define TORRE1 20
 #define TORRE2 62
 #define TORRE3 104
@@ -148,6 +149,8 @@ int main(void) {
     printf("Jogar Torre de Hanoi (J)\n");
     printf("Resolver Torre de Hanoi (R)\n");
     lerOp: scanf(" %c", &opcao);
+
+    opcao = toupper(opcao);
 
     if(opcao != 74 && opcao != 82){			//verifica se o caracter é válido
           printf("Opção inválida.\nEscreva novamente.\n");	// caso não seja, volta-se para linha de leitura da opção
